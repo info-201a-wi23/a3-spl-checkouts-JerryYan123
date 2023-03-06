@@ -66,7 +66,7 @@ physical checkouts, the digital checkouts is increasing and the physical checkou
 shows the trend of the readers are continuously shifting their way of reading from the physical book to the online access for some reasons like the pandemic or saving the time of commuting.
 
 ``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R"), warning = F, message = F}
-```
+``````
 
 ### Second Trends Over Time Chart
 
@@ -77,13 +77,15 @@ The graph shows that the physical book and ebook are more popular than the audio
 
 
 ``````{r, echo = FALSE, code = readLines("chart2_example.R"), warning = F, message = F}
-```
+``````
 
 ### Top five popular publishers
+
+- Which publishers are popular and how many of their books are checked out?
 
 This histogram shows the top five checkouts of publishers.The histogram was designed for this part to get a clear reflection on which one is the best and we can easily compare them. This shows which publishers are having the book that are most popular and attractive to the readers. Appearently, HarperCollins Publishers Inc. is the most popular one with the highest checkouts in 2022 of 591717.
 
 ``````{r, echo = FALSE, code = readLines("chart3_example.R"), warning = F, message = F}
-```
+``````
 
 
