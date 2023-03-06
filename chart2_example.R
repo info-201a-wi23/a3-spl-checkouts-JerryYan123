@@ -21,12 +21,12 @@ Book_change <- Checkouts %>%
   group_by(CheckoutMonth) %>%
   summarize(CheckoutPerMonth = sum(Checkouts))
 
-Y <- seq(1, 12)
+year <- seq(1, 12)
 
-ggplot(Ebook_change, aes(x = Y, color = MaterialType)) +
+ggplot(Ebook_change, aes(x = year, color = MaterialType)) +
   geom_line(aes(y = CheckoutPerMonth, color = "EBOOK")) +
   geom_line(aes(y = Audiobook_change$CheckoutPerMonth, color = "AUDIOBOOK")) +
   geom_line(aes(y = Book_change$CheckoutPerMonth, color = "BOOK")) +
   ggtitle("The number of different material types of book \n checkouts changed over time in 2022") +
-  xlab("Month") + ylab("Checkouts") +
-  scale_x_discrete(limits=Y)
+  xlab("Month") + ylab("Number of checked out books") +
+  scale_x_discrete(limits = year)

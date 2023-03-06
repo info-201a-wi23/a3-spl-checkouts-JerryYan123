@@ -27,4 +27,3 @@ Summary$Most_popular_book_22Jan <- Checkouts %>%
   filter(Checkouts == max(Checkouts, na.rm = T)) %>%
   pull(Title)
 
-View(Summary)

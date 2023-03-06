@@ -15,11 +15,12 @@ Digital_book_change <- Checkouts %>%
   group_by(CheckoutMonth) %>%
   summarize(CheckoutPerMonth = sum(Checkouts))
 
-Y <- seq(1, 12)
+year <- seq(1, 12)
 
-ggplot(Physical_book_change, aes(x = Y, color = UsageClass)) +
+ggplot(Physical_book_change, aes(x = year, color = UsageClass)) +
   geom_line(aes(y = CheckoutPerMonth, color = "Physical")) +
   geom_line(aes(y = Digital_book_change$CheckoutPerMonth, color = "Digital")) +
   ggtitle("The number of physical and digital \n checkouts changed over time in 2022") +
-  xlab("Month") + ylab("Checkouts") +
-  scale_x_discrete(limits=Y)
+  xlab("Month") + ylab("Number of checked out books") +
+  scale_x_discrete(limits = year)
+

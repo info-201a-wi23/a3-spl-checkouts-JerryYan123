@@ -5,87 +5,84 @@ output: html_document
 
 ### Introduction
 
-The dataset includes all items checked out in 2022-2023 from Seattle Public Library. I am interested with the material type of the books that are checked out in this period. With the development of technology and the pandemic, I am curious about how the ways of reading a book are changing.
+The dataset includes all items checked out in 2022-2023 from Seattle Public Library. I am interested in the material type of books that are checked out in this period. With the development of technology and the pandemic, I am curious about how the ways of reading a book are changing.
 
 ### Summary Information
 
-- What is the average number of checkouts for 2022 and 2023?
-  3.32 for 2022 and 3.52 for 2023
+```{r, include=FALSE, warning = F, message = F}
+source("summary.R", local = knitr::knit_global())
+```
+
+- What is the average number of checkouts of each year?
+  
+  For year `r Summary$average_checkout$CheckoutYear`, the numbers are respectively `r Summary$average_checkout$average_checkout` 
+
 - What is the month with the most checkouts for the book "Bad at Love"?
-  Oct.
+
+  The `r Summary$Most_checkout_badAtLove`th month
+
 - What is the month with the most checkouts for ebooks?
-  Sep.
+
+  The `r Summary$Least_checkout_ebooks`th month
+
 - How many Publishers are there?
-  2757014
+
+  There are `r Summary$Publisher` publishers
+
 - Which book was checked out the most times at 2022 Jan?
-  "Headphones"
+
+  It is `r Summary$Most_popular_book_22Jan`
 
 ### The Dataset
 
 - Who collected/published the data?
+  
   The data was collected and published by Seattle Public Library Open data. 
   
 - What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
-  The parameters includes the checkouts data of each book with details from 2022 to 2023, 
-  the checkout time was correct to month, the details include the publication, authors, 
-  and the checked out book types are included.
+
+  The parameters include the checkout data of each book with details from 2022 to 2023, the checkout time was correct to month, and the details include the publication, authors, and the checked-out book types are included.
 
 - How was the data collected or generated?  
+  
   The data was collected by the Open data, and they are all real data from the Library.
 
 - Why was the data collected?  
+  
   The data was collected to understand how are people borrowing books and what book they are borrowing.
 
 - What, if any, ethical questions do you need to consider when working with this data?  
-  I don't see any ethical questions for this dataset, because the book checkout will not 
-  associate with any privacy issues or sensitive problems.
+  
+  I don't see any ethical questions for this dataset, because the book checkout will not associate with any privacy issues or sensitive problems. But if in the future we relate the checkouts to individuals' profiles, I would concern about the ethical problem of using their information.
 
 - What are possible limitations or problems with this data?   (at least 200 words)
-  Actually, I don't think there are any severe limitations or problems with the data. Since the 
-  dataset includes a large range of time, the information is comprehensive and complicated enough
-  for people to work with. However, to have a better understanding of the readers, the data about the 
-  reader's profile can be important. This can include their race, age, and gender. With more information
-  about the readers, we will be able to get more conclusions about how the books checked out are related
-  to the readers. Moreover, if there will be an exact time or period the checking out occurred, we can 
-  also get more information to make improvements or provide suggestions. For example, if we have 
-  whether people are coming into the library in the morning, noon, or afternoon, we can have some ideas
-  about providing lunch like sandwiches and drink like coffee or tea for them based on the flow rate. 
-  With the known flow rate, we can also improve the transportation outside of the library to make 
-  people transport more efficient. Inside the library, we can also know how to manage the library 
-  administration and their work to reduce the waiting time of the readers. Last but no least, there are 
-  some missing data, but this is common in most of the dataset.
-  
 
+  I don't think there are any severe limitations or problems with the data. Since the dataset includes a large range of time, the information is comprehensive and complicated enough for people to work with. However, to have a better understanding of the readers, the data about the reader's profile can be important. This can include their race, age, and gender. With more information about the readers, we will be able to get more conclusions about how the books checked out are related to the readers. Moreover, if there will be an exact time or period the checking out occurred, we can also get more information to make improvements or provide suggestions. For example, if we have whether people are coming into the library in the morning, noon, or afternoon, we can have some ideas about providing lunch like sandwiches and drink like coffee or tea for them based on the flow rate. With the known flow rate, we can also improve transportation outside of the library to make people's transport more efficient. Inside the library, we can also know how to manage the library administration and their work to reduce the waiting time of the readers. Last but not least, there are some missing data, but this is common in most of the dataset.
 
 ### First Trends Over Time Chart
 
 - How has the number of physical and digital checkouts changed over time in 2022?
 
-It is clear on the graph where the red line represents the digital checkouts and the blue line represent
-physical checkouts, the digital checkouts is increasing and the physical checkout is decreasing. This 
-shows the trend of the readers are continuously shifting their way of reading from the physical book to the online access for some reasons like the pandemic or saving the time of commuting.
-
 ``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R"), warning = F, message = F}
 ``````
+
+It is clear on the graph that the red line represents the digital checkouts and the blue line represents physical checkouts, the digital checkouts are increasing and the physical checkout is decreasing. This shows the trend of readers continuously shifting their way of reading from the physical book to online access for some reasons like the pandemic or saving time of commuting.
 
 ### Second Trends Over Time Chart
 
 - How has the number of books of different major material type checkouts changed over time in 2022, 
 and whats the different between them?
 
-The graph shows that the physical book and ebook are more popular than the audiobook. There is a significant reduce of checkouts of audio book on April, and immediately recovered on May. The changes of different material types of book according to the change of time is not significant. However, the change of three different material types of book are similar. For example, from Jan to Feb, the checkouts for these three types are all decreasing. From Feb to March, they are all increasing. This means that the propotion of each material types of book being checked out might not change over time.
-
-
 ``````{r, echo = FALSE, code = readLines("chart2_example.R"), warning = F, message = F}
 ``````
+
+The graph shows that physical books and ebooks are more popular than audiobooks. There is a significant reduction in checkouts of the audiobook in April which immediately recovered in May. The changes in different material types of the book according to the change of time are not significant. However, the change in the three different material types of books is similar. For example, from Jan to Feb, the checkouts for these three types are all decreasing. From Feb to March, they are all increasing. This means that the proportion of each material type of book being checked out might not change over time.
 
 ### Top five popular publishers
 
 - Which publishers are popular and how many of their books are checked out?
 
-This histogram shows the top five checkouts of publishers.The histogram was designed for this part to get a clear reflection on which one is the best and we can easily compare them. This shows which publishers are having the book that are most popular and attractive to the readers. Appearently, HarperCollins Publishers Inc. is the most popular one with the highest checkouts in 2022 of 591717.
-
 ``````{r, echo = FALSE, code = readLines("chart3_example.R"), warning = F, message = F}
 ``````
 
-
+This histogram shows the top five checkouts of publishers. The histogram was designed for this part to get a clear reflection on which one is the best and we can easily compare them. This shows which publishers are having the book that is most popular and attractive to the readers. Apparently, Harper Collins Publishers Inc. is the most popular one with the highest checkouts in 2022 of `r Top_one$num`.
